@@ -21,6 +21,7 @@ export function PostWidget({
   location,
   postPicture,
   userPicturePath,
+  fileName,
   likes,
   comments,
 }) {
@@ -72,7 +73,7 @@ export function PostWidget({
             borderRadius: "0.75rem",
             marginTop: "0.75rem",
           }}
-          src={`http://localhost:3001/assets/${postPicture}`}
+          src={`http://localhost:3001/images/${fileName}`}
         />
       )}
       <FlexBox mt="0.25rem">

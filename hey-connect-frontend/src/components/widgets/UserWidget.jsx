@@ -57,7 +57,7 @@ export function UserWidget({ userId }) {
     viewedProfile,
     impressions,
     friends,
-    picturePath,
+    fileName,
   } = userState;
 
   return (
@@ -69,7 +69,7 @@ export function UserWidget({ userId }) {
         onClick={() => navigate(`/profile/${userId}`)}
       >
         <FlexBox gap="1rem">
-          <UserImage image={picturePath} />
+          <UserImage imageProp={fileName} />
           <Box>
             <Typography
               variant="h4"

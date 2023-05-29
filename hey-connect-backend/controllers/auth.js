@@ -17,6 +17,12 @@ export const register = async (req, res, next) => {
     occupation,
   } = req.body;
 
+  let filename;
+
+  if (req.file) {
+    filename = req.file.filename;
+  }
+
   const newUser = await User.create({
     firstName,
     lastName,
@@ -26,6 +32,7 @@ export const register = async (req, res, next) => {
     friends,
     location,
     occupation,
+    fileName: filename,
     viewedProfile: Math.floor(Math.random() * 10000),
     impressions: Math.floor(Math.random() * 10000),
   });
@@ -59,7 +66,8 @@ export const login = async (req, res, next) => {
     _id: user._id,
     firstName: user.firstName,
     lastName: user.lastName,
-    picturePath: user.picturePath,
+    picturePath: user.fileName,
+    fileName: user.fileName,
   };
 
   console.log({ userJson });

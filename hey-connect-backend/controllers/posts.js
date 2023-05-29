@@ -5,6 +5,11 @@ import { StatusCodes } from "http-status-codes";
 export const createPost = async (req, res, next) => {
   const { userId } = req.user;
   const { post, postPicture } = req.body;
+  let filename;
+
+  if (req.file) {
+    filename = req.file.filename;
+  }
 
   const user = await User.findById(userId);
   const newPost = await Post.create({
@@ -13,8 +18,9 @@ export const createPost = async (req, res, next) => {
     lastName: user.lastName,
     location: user.location,
     post,
+    fileName: filename,
     postPicture,
-    userPicturePath: user.picturePath,
+    userPicturePath: user.fileName,
     likes: {},
     comments: [],
   });

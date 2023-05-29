@@ -38,6 +38,7 @@ const UserSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    fileName: String,
     location: String,
     occupation: String,
     viewedProfile: Number,
