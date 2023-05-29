@@ -15,7 +15,7 @@ export function FriendListWidget({ userId }) {
   const getFriends = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/users/${userId}/friends`,
+        `https://hey-connect-server.onrender.com/users/${userId}/friends`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

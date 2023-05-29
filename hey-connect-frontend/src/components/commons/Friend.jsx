@@ -26,7 +26,7 @@ export function Friend({ friendId, name, subtitle, userPicturePath }) {
   const addRemoveFriend = async () => {
     console.log("adding friends");
     const response = await axios.patch(
-      `http://localhost:3001/users/${_id}/friends/${friendId}`,
+      `https://hey-connect-server.onrender.com/users/${_id}/friends/${friendId}`,
       {},
       {
         headers: { Authorization: `Bearer ${token}` },

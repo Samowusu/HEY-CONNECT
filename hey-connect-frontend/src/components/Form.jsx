@@ -67,7 +67,7 @@ export function Form({ onError }) {
 
     try {
       const savedUserResponse = await axios.post(
-        "http://localhost:3001/auth/register",
+        "https://hey-connect-server.onrender.com/auth/register",
         formData
       );
       const savedUser = savedUserResponse.data;
@@ -90,7 +90,7 @@ export function Form({ onError }) {
   const handleLoginUser = async (values, onSubmitProps) => {
     try {
       const loggedInResponse = await axios.post(
-        "http://localhost:3001/auth/login",
+        "https://hey-connect-server.onrender.com/auth/login",
         values
       );
       const loggedIn = loggedInResponse.data;

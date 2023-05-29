@@ -29,7 +29,7 @@ export function UserWidget({ userId }) {
   const getUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/users/${userId}`,
+        `https://hey-connect-server.onrender.com/users/${userId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

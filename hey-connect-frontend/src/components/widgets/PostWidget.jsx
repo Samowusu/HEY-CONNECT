@@ -39,7 +39,7 @@ export function PostWidget({
   const handleLikePost = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:3001/posts/${postId}/like`,
+        `https://hey-connect-server.onrender.com/${postId}/like`,
         { userId: loggedInUserId },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -73,7 +73,7 @@ export function PostWidget({
             borderRadius: "0.75rem",
             marginTop: "0.75rem",
           }}
-          src={`http://localhost:3001/images/${fileName}`}
+          src={`https://hey-connect-server.onrender.com/images/${fileName}`}
         />
       )}
       <FlexBox mt="0.25rem">

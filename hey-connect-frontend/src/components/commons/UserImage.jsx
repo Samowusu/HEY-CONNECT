@@ -14,7 +14,7 @@ export function UserImage({ size = "60px", imageProp }) {
         width={"100%"}
         height={"100% "}
         alt="user"
-        src={`http://localhost:3001/images/${imageSrc}`}
+        src={`https://hey-connect-server.onrender.com/images/${imageSrc}`}
       />
     </Box>
   );
