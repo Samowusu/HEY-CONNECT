@@ -71,6 +71,7 @@ export function Form({ onError }) {
         formData
       );
       const savedUser = savedUserResponse.data;
+      console.log({ savedUser });
       onSubmitProps.resetForm();
 
       if (savedUser) {
@@ -93,6 +94,7 @@ export function Form({ onError }) {
         values
       );
       const loggedIn = loggedInResponse.data;
+      console.log({ loggedIn });
       onSubmitProps.resetForm();
       if (loggedIn) {
         dispatch(

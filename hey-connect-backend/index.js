@@ -8,7 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
-import connectDB from "./db/connection.js";
+import connectDB, { connectGridFS } from "./db/connection.js";
 import notFound from "./middleware/notFound.js";
 import errorHandlerMiddleware from "./middleware/errorHandler.js";
 import authorizeUser from "./middleware/auth.js";
@@ -16,6 +16,8 @@ import { register } from "./controllers/auth.js";
 import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
 import postsRoute from "./routes/posts.js";
+import { upload } from "./config/multerConfig.js";
+import { gfs } from "./db/connection.js";
 // CONFIGURATIONS
 dotenv.config();
 const app = express();
@@ -48,6 +50,18 @@ app.use(cors());
 
 // ROUTES
 // app.post("/auth/register", upload.single("picture"), register);
+
+//fetch images from the DB
+
+app.get("/images/:filename", async (req, res) => {
+  const { filename } = req.params;
+  try {
+    gfs.openDownloadStreamByName(filename).pipe(res);
+  } catch (error) {
+    res.send(`can't download file`);
+  }
+});
+
 app.use("/auth", authRoute);
 app.use("/users", authorizeUser, usersRoute);
 app.use("/posts", authorizeUser, postsRoute);
@@ -56,12 +70,17 @@ app.use(notFound);
 app.use(errorHandlerMiddleware);
 
 // MONGOOSE CONNECTION
+
 const port = process.env.PORT || 5000;
 const init = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
+    await connectGridFS(process.env.MONGO_URL);
+
     app.listen(port, () => {
-      console.log(`server is listening on port ${port}...`);
+      console.log(
+        `image-upload branch: server is listening on port ${port}...`
+      );
     });
   } catch (error) {
     console.log(error);

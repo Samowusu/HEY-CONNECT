@@ -16,6 +16,7 @@ const PostSchema = new mongoose.Schema(
       required: [true, "last name can't be empty"],
     },
     location: String,
+    fileName: String,
     postPicture: String,
     post: String,
     userPicturePath: String,

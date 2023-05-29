@@ -64,6 +64,7 @@ export function AllPostsWidget({ isProfile = false }) {
           userPicturePath,
           likes,
           comments,
+          fileName,
         }) => (
           <PostWidget
             key={_id}
@@ -73,9 +74,10 @@ export function AllPostsWidget({ isProfile = false }) {
             post={post}
             location={location}
             postPicture={postPicture}
-            userPicturePath={userPicturePath}
+            userPicturePath={fileName}
             likes={likes}
             comments={comments}
+            fileName={fileName}
           />
         )
       )}
