@@ -13,9 +13,12 @@ export function AllPostsWidget({ isProfile = false }) {
 
   const getPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/posts", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://hey-connect-server.onrender.com/posts",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       const { posts } = response.data;
 
       console.log({ posts });
@@ -29,7 +32,7 @@ export function AllPostsWidget({ isProfile = false }) {
   const getUserPosts = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/posts/${userId}/userPosts`,
+        `https://hey-connect-server.onrender.com/posts/${userId}/userPosts`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

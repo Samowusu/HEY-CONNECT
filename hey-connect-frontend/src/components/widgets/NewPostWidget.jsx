@@ -47,7 +47,7 @@ export function NewPostWidget() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/posts",
+        "https://hey-connect-server.onrender.com/posts",
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -57,9 +57,12 @@ export function NewPostWidget() {
       console.log({ post });
       if (!post) return;
 
-      const allPostsResponse = await axios.get("http://localhost:3001/posts", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const allPostsResponse = await axios.get(
+        "https://hey-connect-server.onrender.com/posts",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       const { posts } = allPostsResponse.data;
       console.log({ posts });
 
